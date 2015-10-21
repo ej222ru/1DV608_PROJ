@@ -78,6 +78,18 @@ class GameModel {
         return $neighbour;
         
     }
+    
+    public function gameSolved(){
+        $cells =  $_SESSION['GameView::cellNumbers'];
+        for ($i=0;$i<15;$i++){
+            if ($_SESSION['GameView::cellNumbers'][$i] != $i+1){
+                var_dump($_SESSION['GameView::cellNumbers'][$i]);
+                var_dump($i+1);
+                return false;
+            }
+        }
+        return true;
+    }
   
     public function initCellNumbers(){
         $cells = array();
