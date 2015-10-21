@@ -2,7 +2,7 @@
 /**
  * Description of GameView
  *
- * @author User
+ * @author Erland Jönsson
  */
 
 namespace view;
@@ -24,6 +24,8 @@ class GameView {
             $this->unsetCookies();
             
             $message = $this->getSessionMessage();
+          //  $cellPics[] = $this->getCellNumbers();
+            
             $buttonText = 'Start a 15Game';
             //generate HTML
             if ($this->getRequestStartAGame())
@@ -42,6 +44,8 @@ class GameView {
     
     private function generateGameTableHTML($message, $buttonText) {
             self::$button = $buttonText;
+            $arr[0] = '1';
+            $cellPics[0] = 'pics/' . $arr[0] . '.jpg';
             return "<form method='post' > 
                             <fieldset>
                                     <legend>15Game - the ultimate challenge</legend>
@@ -51,35 +55,32 @@ class GameView {
                                         
                                     <input type='submit' name='".self::$game."' value='".self::$button."'/>
                             </fieldset>
-                            
-        <table  border='5' width='400' cellpadding='40'>
-            <tr><!First row>
-                <td><div id = 'cell_00'/></td>
-                <td><div id = 'cell_01'/></td>
-                <td><div id = 'cell_02'/></td>
-                <td><div id = 'cell_03'/></td>
-            </tr>
-            <tr><!Second row>
-                <td><div id = 'cell_10'/></td>
-                <td><div id = 'cell_11'/></td>
-                <td><div id = 'cell_12'/></td>
-                <td><div id = 'cell_13'/></td>
-            </tr>
-            <tr><!Third row>
-                <td><div id = 'cell_20'/></td>
-                <td><div id = 'cell_21'/></td>
-                <td><div id = 'cell_22'/></td>
-                <td><div id = 'cell_23'/></td>
-            </tr>
-            <tr><!Fourth row>
-                <td><div id = 'cell_30'/></td>
-                <td><div id = 'cell_31'/></td>
-                <td><div id = 'cell_32'/></td>
-                <td><div id = 'cell_33'/></td>
-            </tr>
-        </table>
-   
-
+                            <table  border='4' bgcolor='#00D000' width='200' cellpadding='1'>
+                                <tr><!First row>
+                                    <td><div id = 'cell_00'/><img src=$cellPics[0] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_01'/><img src=$cellPics[1] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_02'/><img src=$cellPics[2] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_03'/><img src=$cellPics[3] alt='1' style='width:80px;height:80px;'></td>
+                                </tr>
+                                <tr><!Second row>
+                                    <td><div id = 'cell_10'/><img src=$cellPics[4] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_11'/><img src=$cellPics[5] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_12'/><img src=$cellPics[6] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_13'/><img src=$cellPics[7] alt='1' style='width:80px;height:80px;'></td>
+                                </tr>
+                                <tr><!Third row>
+                                    <td><div id = 'cell_20'/><img src=$cellPics[8] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_21'/><img src=$cellPics[9] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_22'/><img src=$cellPics[10] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_23'/><img src=$cellPics[11] alt='1' style='width:80px;height:80px;'></td>
+                                </tr>
+                                <tr><!Fourth row>
+                                    <td><div id = 'cell_30'/><img src=$cellPics[12] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_31'/><img src=$cellPics[13] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_32'/><img src=$cellPics[14] alt='1' style='width:80px;height:80px;'></td>
+                                    <td><div id = 'cell_33'/><img src=$cellPics[15] alt='1' style='width:80px;height:80px;'></td>
+                                </tr>
+                            </table>
                     </form>
             ";
     }    
