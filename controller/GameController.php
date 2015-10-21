@@ -31,6 +31,9 @@ class GameController {
             $cellNumbers = $this->gameModel->renderGameSetup();
             $this->gameView->setCellNumbers($cellNumbers );
         }
+        else if ($this->gameView->getRequestMoveCell() != 999){
+            $this->gameView->setSessionMessage("You want to move cell");
+        }
         else {
             $this->gameView->setSessionMessage("Enter your name and start a Game!");
         }
