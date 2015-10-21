@@ -6,16 +6,16 @@ class LayoutView {
     //put your code here
     
     
-    public function renderGame($user, GameView $gameView) {
+    public function renderGame($user, GameView $gameView, $cellNumbers) {
         ?>
         <!DOCTYPE html>
         <html>
             <head>
                 <meta charset="utf-8">
-                <title>The 15-Game</title>
+                <title>The 15 Puzzle</title>
             </head>
             <body>
-                <h1>The 15-Game</h1>
+                <h1>The 15 Puzzle</h1>
                 <?php 
                     echo "<h2>" . $user . "</h2>";
                 ?>

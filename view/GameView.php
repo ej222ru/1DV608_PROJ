@@ -14,9 +14,9 @@ class GameView {
     private static $name = "GameView::UserName";
     private static $messageId = "GameView::Message";
     private static $button = "GameView::Button";
+    private static $moves = "GameView::moves";
     private static $sessionSaveLocation = "\\view\\GameView\\message";
     private static $cellNumbers = "GameView::cellNumbers";
-    private static $emptyCell = "GameView::empty";
     
              
     public function getUserClient() {
@@ -30,11 +30,11 @@ class GameView {
             $message = $this->getSessionMessage();
           //  $cellPics[] = $this->getCellNumbers();
             
-            $buttonText = 'Start a 15Game';
+            $buttonText = 'Start a 15 Puzzle';
             //generate HTML
             if ($this->getRequestStartAGame() || $this->getRequestMoveCell())
             {
-               $buttonText = 'Restart a 15Game'; 
+               $buttonText = 'Restart a 15 Puzzle'; 
             }
             return $this->generateGameTableHTML($message, $buttonText);
     }
@@ -48,29 +48,29 @@ class GameView {
     public function setCellNumbers($cellNumbers )
     {
         $_SESSION[self::$cellNumbers] = $cellNumbers;
-        $_SESSION[self::$emptyCell] = 15;
-        for ($i=0;$i<15;$i++){
-            if ($cellNumbers[$i] == 0){
-                $_SESSION[self::$emptyCell] = $i;
-            }
-        }        
+    }
+    public function resetMoves()
+    {
+        $_SESSION[self::$moves] = 0;
     }
     
     private function generateGameTableHTML($message, $buttonText) {
             self::$button = $buttonText;
             $cells = $_SESSION[self::$cellNumbers];
+            $moves = $_SESSION[self::$moves];
             $value = 1;
             for ($i=0;$i<16;$i++){
                 $cellPics[] = 'pics/' . $cells[$i] . '.jpg';
             }
             return "<form method='post' > 
                             <fieldset>
-                                    <legend>15Game - the ultimate challenge</legend>
+                                    <legend>15 Puzzle - the ultimate challenge</legend>
                                     <p id='".self::$messageId."'>$message</p>
                                     <label for='".self::$name."'>Username :</label>
                                     <input type='text' id='".self::$name."' name='".self::$name."' value='".$this->getRequestUserName()."'/>
                                         
                                     <input type='submit' name='".self::$game."' value='".self::$button."'/>
+                                    <p id='".self::$moves."'>Moves: $moves</p>
                             </fieldset>
                             <table  border='4' bgcolor='#00D000' width='200' cellpadding='1'>
                                 <tr><!First row>
@@ -111,8 +111,8 @@ class GameView {
 	public function getRequestStartAGame() {
 		if (isset($_POST[self::$game]))
                 {
-                    return ((strcmp(trim($_POST[self::$game]), "Start a 15Game") == 0) ||
-                            (strcmp(trim($_POST[self::$game]), "Restart a 15Game") == 0));
+                    return ((strcmp(trim($_POST[self::$game]), "Start a 15 Puzzle") == 0) ||
+                            (strcmp(trim($_POST[self::$game]), "Restart a 15 Puzzle") == 0));
                 }
 		return false;
 	} 

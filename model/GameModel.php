@@ -68,7 +68,7 @@ class GameModel {
         
         if ($neighbour){
             // switch place
-
+            $_SESSION['GameView::moves'] += 1;
             $temp = $cells[$cellToMove];
             $_SESSION['GameView::cellNumbers'][$cellToMove] = 0;
             $_SESSION['GameView::cellNumbers'][$empty] = $temp;

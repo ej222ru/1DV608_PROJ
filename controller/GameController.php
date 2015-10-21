@@ -29,6 +29,7 @@ class GameController {
             ($this->gameView->getRequestUserName() != ''))
         {
             $this->gameView->setSessionMessage("A game is started, good luck!");
+            $this->gameView->resetMoves();
             $cellNumbers = $this->gameModel->initCellNumbers();
             $this->gameView->setCellNumbers($cellNumbers );
             $cellNumbers = $this->gameModel->renderGameSetup();
@@ -45,6 +46,7 @@ class GameController {
             
         }
         else {
+            $this->gameView->resetMoves();
             $this->gameView->setSessionMessage("Enter your name and start a Game!");
             $cellNumbers = $this->gameModel->initCellNumbers();
             $this->gameView->setCellNumbers($cellNumbers );
