@@ -24,18 +24,14 @@ class GameController {
     
     public function startGameApplikation($layoutView) {
         $user = $this->gameView->getUserClient();
-        echo "test 1";
         if (($this->gameView->getRequestStartAGame()) && 
             ($this->gameView->getRequestUserName() != '')){
-        echo "test 2";
             
             $this->gameView->setSessionMessage("A game is started, good luck!");
-            // $this->gameModel->renderGameSetup();
-            $test1 = 1;
-            $test2 = $test1;
+            $cellNumbers = $this->gameModel->renderGameSetup();
+            $this->gameView->setCellNumbers($cellNumbers );
         }
         else {
-            echo "test 3";        
             $this->gameView->setSessionMessage("Enter your name and start a Game!");
         }
                  

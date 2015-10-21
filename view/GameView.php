@@ -14,7 +14,10 @@ class GameView {
     private static $messageId = "GameView::Message";
     private static $button = "GameView::Button";
     private static $sessionSaveLocation = "\\view\\GameView\\message";
-        
+    
+    private $cells = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0);
+    
+             
     public function getUserClient() {
  //           return new \model\UserClient($_SERVER["REMOTE_ADDR"], $_SERVER["HTTP_USER_AGENT"]);
     }   
@@ -41,6 +44,10 @@ class GameView {
             header("Location: /index.php");
     }    
 
+    public function setCellNumbers($cellNumbers )
+    {
+        $this->cells = $cellNumbers;
+    }
     
     private function generateGameTableHTML($message, $buttonText) {
             self::$button = $buttonText;
@@ -61,7 +68,7 @@ class GameView {
             $arr[14] = '15';
             $arr[15] = '0';
             
-            foreach ($arr as $value) {
+            foreach ($this->cells as $value) {
                 $cellPics[] = 'pics/' . $value . '.jpg';
             }
             return "<form method='post' > 
