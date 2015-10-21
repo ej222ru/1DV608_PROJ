@@ -45,7 +45,25 @@ class GameView {
     private function generateGameTableHTML($message, $buttonText) {
             self::$button = $buttonText;
             $arr[0] = '1';
-            $cellPics[0] = 'pics/' . $arr[0] . '.jpg';
+            $arr[1] = '2';
+            $arr[2] = '3';
+            $arr[3] = '4';
+            $arr[4] = '5';
+            $arr[5] = '6';
+            $arr[6] = '7';
+            $arr[7] = '8';
+            $arr[8] = '9';
+            $arr[9] = '10';
+            $arr[10] = '11';
+            $arr[11] = '12';
+            $arr[12] = '13';
+            $arr[13] = '14';
+            $arr[14] = '15';
+            $arr[15] = '0';
+            
+            foreach ($arr as $value) {
+                $cellPics[] = 'pics/' . $value . '.jpg';
+            }
             return "<form method='post' > 
                             <fieldset>
                                     <legend>15Game - the ultimate challenge</legend>
