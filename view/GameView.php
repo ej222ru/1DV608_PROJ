@@ -15,8 +15,8 @@ class GameView {
     private static $messageId = "GameView::Message";
     private static $button = "GameView::Button";
     private static $sessionSaveLocation = "\\view\\GameView\\message";
-    
-    private $cells = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0);
+    private static $cellNumbers = "GameView::cellNumbers";
+    private static $emptyCell = "GameView::empty";
     
              
     public function getUserClient() {
@@ -32,7 +32,7 @@ class GameView {
             
             $buttonText = 'Start a 15Game';
             //generate HTML
-            if ($this->getRequestStartAGame())
+            if ($this->getRequestStartAGame() || $this->getRequestMoveCell())
             {
                $buttonText = 'Restart a 15Game'; 
             }
@@ -47,14 +47,21 @@ class GameView {
 
     public function setCellNumbers($cellNumbers )
     {
-        $this->cells = $cellNumbers;
+        $_SESSION[self::$cellNumbers] = $cellNumbers;
+        $_SESSION[self::$emptyCell] = 15;
+        for ($i=0;$i<15;$i++){
+            if ($cellNumbers[$i] == 0){
+                $_SESSION[self::$emptyCell] = $i;
+            }
+        }        
     }
     
     private function generateGameTableHTML($message, $buttonText) {
             self::$button = $buttonText;
-
-            foreach ($this->cells as $value) {
-                $cellPics[] = 'pics/' . $value . '.jpg';
+            $cells = $_SESSION[self::$cellNumbers];
+            $value = 1;
+            for ($i=0;$i<16;$i++){
+                $cellPics[] = 'pics/' . $cells[$i] . '.jpg';
             }
             return "<form method='post' > 
                             <fieldset>

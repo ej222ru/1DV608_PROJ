@@ -25,7 +25,6 @@ $gameView = new \view\GameView($gameModel);
 $gameController = new \controller\GameController($gameModel, $gameView);
 
 
-
 //Controller must be run first since state is changed
 // $gameController->doControl();
 
