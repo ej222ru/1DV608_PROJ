@@ -11,7 +11,7 @@ class Settings {
 	/**
 	 * The app session name allows different apps on the same webhotel to share a virtual session
 	 */
-	const APP_SESSION_NAME = "15Game";
+	const APP_SESSION_NAME = "15 Puzzle";
 	
 	/**
 	 * Username of default user

@@ -58,7 +58,6 @@ class GameView {
             self::$button = $buttonText;
             $cells = $_SESSION[self::$cellNumbers];
             $moves = $_SESSION[self::$moves];
-            $value = 1;
             for ($i=0;$i<16;$i++){
                 $cellPics[] = 'pics/' . $cells[$i] . '.jpg';
             }
@@ -74,28 +73,28 @@ class GameView {
                             </fieldset>
                             <table  border='4' bgcolor='#00D000' width='200' cellpadding='1'>
                                 <tr><!First row>
-                                    <td><div id = 'cell_00'/><input type='image' name='cell0' value='CELL1' src=$cellPics[0] alt='1' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_00'/><input type='image' name='cell0' value='CELL1' src=$cellPics[0] alt='0' style='width:80px;height:80px;' /> </td>
                                     <td><div id = 'cell_01'/><input type='image' name='cell1' value='CELL1' src=$cellPics[1] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_02'/><input type='image' name='cell2' value='CELL1' src=$cellPics[2] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_03'/><input type='image' name='cell3' value='CELL1' src=$cellPics[3] alt='1' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_02'/><input type='image' name='cell2' value='CELL1' src=$cellPics[2] alt='2' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_03'/><input type='image' name='cell3' value='CELL1' src=$cellPics[3] alt='3' style='width:80px;height:80px;' /> </td>
                                 </tr>
                                 <tr><!Second row>
-                                    <td><div id = 'cell_10'/><input type='image' name='cell4' value='CELL1' src=$cellPics[4] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_11'/><input type='image' name='cell5' value='CELL1' src=$cellPics[5] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_12'/><input type='image' name='cell6' value='CELL1' src=$cellPics[6] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_13'/><input type='image' name='cell7' value='CELL1' src=$cellPics[7] alt='1' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_10'/><input type='image' name='cell4' value='CELL1' src=$cellPics[4] alt='4' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_11'/><input type='image' name='cell5' value='CELL1' src=$cellPics[5] alt='5' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_12'/><input type='image' name='cell6' value='CELL1' src=$cellPics[6] alt='6' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_13'/><input type='image' name='cell7' value='CELL1' src=$cellPics[7] alt='7' style='width:80px;height:80px;' /> </td>
                                 </tr>
                                 <tr><!Third row>
-                                    <td><div id = 'cell_20'/><input type='image' name='cell8' value='CELL1' src=$cellPics[8] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_21'/><input type='image' name='cell9' value='CELL1' src=$cellPics[9] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_22'/><input type='image' name='cell10' value='CELL1' src=$cellPics[10] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_23'/><input type='image' name='cell11' value='CELL1' src=$cellPics[11] alt='1' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_20'/><input type='image' name='cell8' value='CELL1' src=$cellPics[8] alt='8' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_21'/><input type='image' name='cell9' value='CELL1' src=$cellPics[9] alt='9' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_22'/><input type='image' name='cell10' value='CELL1' src=$cellPics[10] alt='10' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_23'/><input type='image' name='cell11' value='CELL1' src=$cellPics[11] alt='11' style='width:80px;height:80px;' /> </td>
                                 </tr>
                                 <tr><!Fourth row>
-                                    <td><div id = 'cell_30'/><input type='image' name='cell12' value='CELL1' src=$cellPics[12] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_31'/><input type='image' name='cell13' value='CELL1' src=$cellPics[13] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_32'/><input type='image' name='cell14' value='CELL1' src=$cellPics[14] alt='1' style='width:80px;height:80px;' /> </td>
-                                    <td><div id = 'cell_33'/><input type='image' name='cell15' value='CELL1' src=$cellPics[15] alt='1' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_30'/><input type='image' name='cell12' value='CELL1' src=$cellPics[12] alt='12' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_31'/><input type='image' name='cell13' value='CELL1' src=$cellPics[13] alt='13' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_32'/><input type='image' name='cell14' value='CELL1' src=$cellPics[14] alt='14' style='width:80px;height:80px;' /> </td>
+                                    <td><div id = 'cell_33'/><input type='image' name='cell15' value='CELL1' src=$cellPics[15] alt='15' style='width:80px;height:80px;' /> </td>
                                 </tr>
                             </table>
                     </form>
