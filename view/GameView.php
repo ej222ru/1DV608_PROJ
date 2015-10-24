@@ -59,7 +59,7 @@ class GameView {
             $cells = $_SESSION[self::$cellNumbers];
             $moves = $_SESSION[self::$moves];
             for ($i=0;$i<16;$i++){
-                $cellPics[] = 'pics/' . $cells[$i] . '.jpg';
+                $cellPics[] = 'http://ej.3space.info/pics/' . $cells[$i] . '.JPG';
             }
             return "<form method='post' > 
                             <fieldset>
