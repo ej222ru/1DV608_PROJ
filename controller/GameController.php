@@ -48,8 +48,12 @@ class GameController {
             }
             
         }
+        else if ($this->gameView->getResendOngoingGame()){
+            $this->gameView->setSessionMessage("Click one of the numbers directly neighbouring the empty cell");
+        }  
         else {
             $this->gameView->resetMoves();
+            $this->gameView->resetUser();
             $this->gameView->setSessionMessage("Enter your name and start a Game!");
             $cellNumbers = $this->gameModel->initCellNumbers();
             $this->gameView->setCellNumbers($cellNumbers );

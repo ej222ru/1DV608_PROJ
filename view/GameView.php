@@ -53,11 +53,24 @@ class GameView {
     {
         $_SESSION[self::$moves] = 0;
     }
-    
+    public function setUser($user)
+    {
+        $_SESSION[self::$name] = $user;
+    }    
+    public function resetUser()
+    {
+        $_SESSION[self::$name] = "";
+    }    
     private function generateGameTableHTML($message, $buttonText) {
             self::$button = $buttonText;
             $cells = $_SESSION[self::$cellNumbers];
             $moves = $_SESSION[self::$moves];
+            $name = "";
+            if (isset($_SESSION[self::$name])){
+                $name = $_SESSION[self::$name];
+            }
+            
+            
             for ($i=0;$i<16;$i++){
                 $cellPics[] = 'http://ej.3space.info/WS3/pics/' . $cells[$i] . '.JPG';
             }
@@ -66,7 +79,7 @@ class GameView {
                                     <legend>15 Puzzle - the ultimate challenge</legend>
                                     <p id='".self::$messageId."'>$message</p>
                                     <label for='".self::$name."'>Username :</label>
-                                    <input type='text' id='".self::$name."' name='".self::$name."' value='".$this->getRequestUserName()."'/>
+                                    <input type='text' id='".self::$name."' name='".self::$name."' value='".$name."'/>
                                         
                                     <input type='submit' name='".self::$game."' value='".self::$button."'/>
                                     <p id='".self::$moves."'>Moves: $moves</p>
@@ -103,8 +116,10 @@ class GameView {
     
     
 	public function getRequestUserName() {
-		if (isset($_POST[self::$name]))
-			return trim($_POST[self::$name]);
+		if (isset($_POST[self::$name])){
+                    $this->setUser(trim($_POST[self::$name]));
+                    return trim($_POST[self::$name]);
+                }
 		return "";
 	} 
 	public function getRequestStartAGame() {
@@ -112,9 +127,18 @@ class GameView {
                 {
                     return ((strcmp(trim($_POST[self::$game]), "Start a 15 Puzzle") == 0) ||
                             (strcmp(trim($_POST[self::$game]), "Restart a 15 Puzzle") == 0));
+                    $_SESSION[self::$name] = trim($_POST[self::$name]);
+                    
                 }
 		return false;
 	} 
+	public function getResendOngoingGame() {
+            if (!isset($_POST[self::$game]) && isset($_SESSION[self::$moves]) && isset($_SESSION[self::$name]) && ($_SESSION[self::$name] != "")) {
+                return true;
+            }
+            return false;
+	}         
+        
 	public function getRequestMoveCell() {
             /*
              * Check if any of the cells have been clicked
@@ -136,12 +160,12 @@ class GameView {
         }     
         
 	private function getSessionMessage() {
-		if (isset($_SESSION[self::$sessionSaveLocation])) {
-			$message = $_SESSION[self::$sessionSaveLocation];
-			unset($_SESSION[self::$sessionSaveLocation]);
-			return $message;
-		}
-		return "";
+            if (isset($_SESSION[self::$sessionSaveLocation])) {
+                    $message = $_SESSION[self::$sessionSaveLocation];
+                    unset($_SESSION[self::$sessionSaveLocation]);
+                    return $message;
+            }
+            return "";
 	}
         
 	private function unsetCookies() {
