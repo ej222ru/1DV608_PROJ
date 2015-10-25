@@ -28,7 +28,7 @@ class GameController {
         if (($this->gameView->getRequestStartAGame()) && 
             ($this->gameView->getRequestUserName() != ''))
         {
-            $this->gameView->setSessionMessage("A game is started, good luck!");
+            $this->gameView->setSessionMessage("Click the number you want to move to the empty slot!");
             $this->gameView->resetMoves();
             $cellNumbers = $this->gameModel->initCellNumbers();
             $this->gameView->setCellNumbers($cellNumbers );
