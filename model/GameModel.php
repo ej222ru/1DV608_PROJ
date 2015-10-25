@@ -81,7 +81,7 @@ class GameModel {
     
     public function gameSolved(){
         $cells =  $_SESSION['GameView::cellNumbers'];
-        for ($i=0;$i<15;$i++){
+        for ($i=0;$i<3;$i++){
             if ($_SESSION['GameView::cellNumbers'][$i] != $i+1){
                 return false;
             }

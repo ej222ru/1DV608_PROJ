@@ -118,7 +118,6 @@ class GameView {
 	public function getRequestUserName() {
 		if (isset($_POST[self::$name])){
                     $this->setUser(trim($_POST[self::$name]));
-            echo "name" . trim($_POST[self::$name]);
                     return trim($_POST[self::$name]);
                 }
 		return "";

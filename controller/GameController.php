@@ -44,7 +44,7 @@ class GameController {
                 $this->gameView->setSessionMessage("Click one of the numbers directly neighbouring the empty cell");
             }
             if ($this->gameModel->gameSolved()){
-                $this->gameView->setSessionMessage("Congraturlation, you solved the puzzle");
+                $this->gameView->setSessionMessage("Congratulation, you solved the puzzle");
             }
             
         }
