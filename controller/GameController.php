@@ -51,6 +51,10 @@ class GameController {
         else if ($this->gameView->getResendOngoingGame()){
             $this->gameView->setSessionMessage("Click one of the numbers directly neighbouring the empty cell");
         }  
+        else if (($this->gameView->getRequestStartAGame()) && 
+            ($this->gameView->getRequestUserName() == "")) {
+            $this->gameView->setSessionMessage("You must enter your name!");
+        }
         else {
             $this->gameView->resetMoves();
             $this->gameView->resetUser();

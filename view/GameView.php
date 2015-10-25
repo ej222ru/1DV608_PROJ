@@ -77,7 +77,7 @@ class GameView {
             return "<form method='post' > 
                             <fieldset>
                                     <legend>15 Puzzle - the ultimate challenge</legend>
-                                    <p id='".self::$messageId."'>$message</p>
+                                    <div style='color:#FF99FF;font-weight:bold;' id='".self::$messageId."'>$message</div>
                                     <label for='".self::$name."'>Username :</label>
                                     <input type='text' id='".self::$name."' name='".self::$name."' value='".$name."'/>
                                         
@@ -118,11 +118,13 @@ class GameView {
 	public function getRequestUserName() {
 		if (isset($_POST[self::$name])){
                     $this->setUser(trim($_POST[self::$name]));
+            echo "name" . trim($_POST[self::$name]);
                     return trim($_POST[self::$name]);
                 }
 		return "";
 	} 
 	public function getRequestStartAGame() {
+            
 		if (isset($_POST[self::$game]))
                 {
                     return ((strcmp(trim($_POST[self::$game]), "Start a 15 Puzzle") == 0) ||
