@@ -10,9 +10,7 @@ namespace model;
 require_once("UserClient.php");
 
 class GameModel {
-    //put your code here
-//    private $cells;
-    
+
     private static $sessionUserLocation = "LoginModel::loggedInUser";
         
     public function __construct() {
@@ -81,7 +79,7 @@ class GameModel {
     
     public function gameSolved(){
         $cells =  $_SESSION['GameView::cellNumbers'];
-        for ($i=0;$i<3;$i++){
+        for ($i=0;$i<15;$i++){
             if ($_SESSION['GameView::cellNumbers'][$i] != $i+1){
                 return false;
             }
